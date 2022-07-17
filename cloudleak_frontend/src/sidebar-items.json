@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Menu",
+    "isTitle": true
+  },
+  {
+    "name": "Dashboard",
+    "url": "index.html",
+    "icon": "grid-fill"
+  },
+  {
+    "name": "Scan History",
+    "key": "table-datatable",
+    "icon": "grid-fill",
+    "submenu": [
+      {
+        "name": "Scan Results",
+        "url": "scan-results.html"
+      },
+      {
+        "name": "All Endpoints",
+        "url": "bucket-endpoints.html"
+      }
+    ]
+  }
+]

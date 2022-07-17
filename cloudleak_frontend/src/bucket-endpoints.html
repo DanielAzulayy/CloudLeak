@@ -1,0 +1,60 @@
+{% set title = 'Bucket Endpoints' %}
+{% set filename = 'bucket-endpoints.html' %}
+
+{% extends 'layouts/master.html' %}
+{% block content %}
+<div class="page-heading">
+    <div class="page-title">
+        <div class="row">
+            <div class="col-12 col-md-6 order-md-1 order-last">
+                <h3>Bucket Endpoints/Files</h3>
+                <br>
+            </div>
+            <div class="col-12 col-md-6 order-md-2 order-first">
+                <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">DataTable Jquery</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <section class="section">
+        <div class="card">
+            <div class="card-header">
+                See all files/endpoints from scanning</p>
+            </div>
+            <div class="card-body">
+                <table class="table" id="table1">
+                    <thead>
+                        <tr>
+                            <th>Bucket</th>
+                            <th>Platform</th>
+                            <th>Service</th>
+                            <th>Endpoint</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr> 
+                            <td> <a href="https://tesla2.s3.amazonaws.com">tesla2.s3.amazonaws.com</a></td>
+                            <td>AWS</td>
+                            <td>S3</td>
+                            <td><a href="https://tesladownload.s3.amazonaws.com/tesladownload"> https://tesladownload.s3.amazonaws.com/tesladownload </a></td>
+                            <td><span class="badge bg-success">Active</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %}
+{% block styles %}
+<link rel="stylesheet" href="assets/css/pages/fontawesome.css">
+<link rel="stylesheet" href="assets/css/pages/datatables.css">
+{% endblock %}
+{% block js %}
+<script src="assets/js/extensions/datatables.js"></script>
+{% endblock %}
