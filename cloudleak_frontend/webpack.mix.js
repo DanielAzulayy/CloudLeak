@@ -19,7 +19,6 @@ mix
   .sass(`${assetsPath}scss/app.scss`, "assets/css/main")
   .sass(`${assetsPath}scss/themes/dark/app-dark.scss`, "assets/css/main")
   .sass(`${assetsPath}scss/pages/error.scss`, "assets/css/pages")
-  .sass(`${assetsPath}scss/pages/chat.scss`, "assets/css/pages")
   .sass(`${assetsPath}scss/pages/fontawesome.scss`, "assets/css/pages")
   .sass(`${assetsPath}scss/pages/datatables.scss`, "assets/css/pages")
   .sass(`${assetsPath}scss/pages/simple-datatables.scss`, "assets/css/pages")
@@ -29,7 +28,6 @@ mix
   .js(`${assetsPath}js/extensions/datatables.js`, "assets/js/extensions")
   .js(`${assetsPath}js/extensions/newScan.js`, "assets/js/extensions")
   .js(`${assetsPath}js/extensions/simple-datatables.js`, "assets/js/extensions")
-  .js(`${assetsPath}js/extensions/tinymce.js`, "assets/js/extensions")
   .js(`${assetsPath}js/pages/dashboard.js`, "assets/js/pages")
   .js(`${assetsPath}js/pages/horizontal-layout.js`, "assets/js/pages")
   .copy(
