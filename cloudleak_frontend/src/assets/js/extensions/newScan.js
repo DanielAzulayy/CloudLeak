@@ -6,11 +6,11 @@ $("#startScan").on("submit", function (e) {
 
   $.ajax({
     type: "POST",
-    url: "http://localhost:8000/api/startScan",
+    url: "http://localhost:8000/api/scans",
     data: { target_scan: target, platform_scan: platform },
     dataType: "json",
     success(response) {
-      alert("succuess", response);
+      alert("succuss", response);
     },
     error(response) {
       alert("Error", response);

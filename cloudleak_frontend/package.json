@@ -1,7 +1,7 @@
 {
-  "name": "mazer",
-  "version": "1.3.0",
-  "description": "Free and Open-source Bootstrap 5 Admin Dashboard Template and Landing Page",
+  "name": "cloudleak-frontend",
+  "version": "1.0",
+  "description": "frontend for cloudleak",
   "main": "index.js",
   "scripts": {
     "development": "mix",
@@ -13,7 +13,7 @@
     "prod-rtl": "mix --production && rtl",
     "zip": "bestzip dist.zip dist/*"
   },
-  "author": "zuramai",
+  "author": "zuramai, modified by danielazulayy",
   "license": "MIT",
   "dependencies": {
     "@fontsource/nunito": "^4.5.4",
