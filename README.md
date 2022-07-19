@@ -1,4 +1,5 @@
-# bucketsLeak - automated cloud vulnerability scanner for aws, azure, gcp, etc. coming soon!
+# bucketsLeak - automated cloud vulnerability scanner
+Coming soon!
 
 
 ## Tools used in this project:
