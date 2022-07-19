@@ -1,6 +1,8 @@
-# bucketsLeak - automated cloud vulnerability scanner
+# CloudLeak - automated cloud vulnerability scanner
 Coming soon!
+Supports: AWS, Azure, and GCP.
 
 
-## Tools used in this project:
+
+## Tools used/based on this project:
 - BucketsHunter (danielazulayy) - [BucketsHunter](https://github.com/DanielAzulayy/BucketsHunter)
