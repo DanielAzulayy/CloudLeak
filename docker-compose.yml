@@ -1,0 +1,20 @@
+services:
+  redis:
+    image: redis:alpine
+    volumes:
+      - redis:/data
+    ports:
+      - 6379:6379
+    deploy:
+      resources:
+        limits:
+          cpus: "${DOCKER_REDIS_CPUS:-0}"
+          memory: "${DOCKER_REDIS_MEMORY:-0}"
+
+  mongodb:
+    image: mongo
+    ports:
+      - 27017:27017
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=${MONGO_USERNAME}
+      - MONGO_INITDB_ROOT_PASSWORD=${MONGO_PASSWORD}
