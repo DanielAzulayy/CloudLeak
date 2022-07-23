@@ -1,16 +1,23 @@
 const mix = require("laravel-mix");
 const sidebarItems = require("./src/sidebar-items.json");
 const horizontalMenuItems = require("./src/horizontal-menu-items.json");
+const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
+const Bun = require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 
 require("laravel-mix-nunjucks");
 const assetsPath = "src/assets/";
 
 // Files loaded from css url()s will be placed alongside our resources
 mix.options({
-  fileLoaderDirs:  {
-      fonts: 'assets/fonts',
-      images: 'assets/images'
-  }
+  fileLoaderDirs: {
+    fonts: "assets/fonts",
+    images: "assets/images",
+  },
+  hmrOptions: {
+    host: "localhost",
+    port: "8080",
+  },
+  plugins: [new BundleAnalyzerPlugin()]
 });
 
 mix
@@ -30,17 +37,14 @@ mix
   .js(`${assetsPath}js/extensions/simple-datatables.js`, "assets/js/extensions")
   .js(`${assetsPath}js/pages/dashboard.js`, "assets/js/pages")
   .js(`${assetsPath}js/pages/horizontal-layout.js`, "assets/js/pages")
-  .copy(
-    "src/assets/images",
-    "dist/assets/images"
-  )
+  .copy("src/assets/images", "dist/assets/images")
   .copy(
     "node_modules/bootstrap-icons/bootstrap-icons.svg",
     "dist/assets/images"
   )
   // TinyMCE automatically loads css and other resources from its relative path
   // so we need this hotfix to move them to the right places.
-  .copy('node_modules/tinymce/skins', 'dist/assets/js/extensions/skins')
+  .copy("node_modules/tinymce/skins", "dist/assets/js/extensions/skins")
   // We place all generated css in /assets/css/xxx
   // This is the relative path to the fileLoaderDirs we specified above
   .setResourceRoot("../../../")
