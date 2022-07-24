@@ -1,8 +1,6 @@
 const mix = require("laravel-mix");
 const sidebarItems = require("./src/sidebar-items.json");
 const horizontalMenuItems = require("./src/horizontal-menu-items.json");
-const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
-const Bun = require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 
 require("laravel-mix-nunjucks");
 const assetsPath = "src/assets/";
@@ -17,7 +15,6 @@ mix.options({
     host: "localhost",
     port: "8080",
   },
-  plugins: [new BundleAnalyzerPlugin()]
 });
 
 mix

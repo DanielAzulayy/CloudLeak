@@ -1,4 +1,13 @@
 services:
+  frontend:
+    build: "./cloudleak_frontend"
+    ports:
+      - "8080:80"
+    deploy:
+      resources:
+        limits:
+          cpus: "${DOCKER_FRONTEND_CPUS:-0}"
+          memory: "${DOCKER_FRONTEND_MEMORY:-0}"
   redis:
     image: redis:alpine
     volumes:
