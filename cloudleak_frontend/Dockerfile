@@ -1,12 +1,11 @@
-FROM node:16
+FROM node:16 AS frontend
 
-WORKDIR /app/src/app
-
-COPY package*.json ./
+WORKDIR /frontend
+COPY package*.json /frontend
 RUN npm install
 
-COPY . .
-RUN [ "npm", "run", "hot" ]
+COPY . /frontend
+RUN npm run development
 
-FROM nginx:alpine
-COPY --from=mix /use/src/app/dist /usr/share/nginx/html
+FROM nginx:latest
+COPY --from=frontend /frontend/dist /usr/share/nginx/html
