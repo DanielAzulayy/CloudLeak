@@ -1,6 +1,7 @@
 from bson import ObjectId
 from pydantic.json import ENCODERS_BY_TYPE
 
+
 class PydanticObjectId(ObjectId):
     """
     ObjectId field. Compatible with Pydantic.

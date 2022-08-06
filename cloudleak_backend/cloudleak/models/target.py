@@ -1,9 +1,10 @@
-from platform import platform
-from pydantic import BaseModel, Field
-from typing import List, Optional, Union
-from fastapi.encoders import jsonable_encoder
-
 from datetime import datetime
+from platform import platform
+from typing import List, Optional, Union
+
+from fastapi.encoders import jsonable_encoder
+from pydantic import BaseModel, Field
+
 from .objectid import PydanticObjectId
 
 
