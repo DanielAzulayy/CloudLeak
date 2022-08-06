@@ -30,9 +30,9 @@ services:
   mongodb:
     image: mongo:latest
     ports:
-      - 27017:27017
+      - ${MONGO_PORT}:${MONGO_PORT}
     environment:
       MONGO_INITDB_ROOT_USERNAME: ${MONGO_USERNAME}
       MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASSWORD}
-      MONGO_INITDB_DATABASE: cloudleak
+      MONGO_INITDB_DATABASE: ${MONGO_INITDB_DATABASE}
       MONDODB_LOG_DIR: /dev/null

@@ -17,3 +17,10 @@ CELERY_CONFIG = {
     "task_max_retries": None,
     "include": [],
 }
+
+# Mongo config
+MONGO_USERNAME = os.getenv("MONGO_USERNAME")
+MONGO_PASSWORD = os.getenv("MONGO_PASSWORD")
+MONGO_PORT = os.getenv("MONGO_PORT", 27017)
+MONGO_INITDB_DATABASE = os.getenv("MONGO_INITDB_DATABASE", "cloudleak")
+MONGO_URI = f"mongodb://{MONGO_USERNAME}:{MONGO_PASSWORD}@localhost:{MONGO_PORT}/{MONGO_INITDB_DATABASE}"
