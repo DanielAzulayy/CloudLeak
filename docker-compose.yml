@@ -2,12 +2,21 @@ services:
   frontend:
     build: "./cloudleak_frontend"
     ports:
-      - "8080:80"
+      - 8080:80
     deploy:
       resources:
         limits:
           cpus: "${DOCKER_FRONTEND_CPUS:-0}"
           memory: "${DOCKER_FRONTEND_MEMORY:-0}"
+
+  backend:
+    build: "./cloudleak_backend"
+    deploy:
+      resources:
+        limits:
+          cpus: "${DOCKER_BACKEND_CPUS:-0}"
+          memory: "${DOCKER_BACKEND_MEMORY:-0}"
+
   redis:
     image: redis:alpine
     ports:
@@ -19,9 +28,11 @@ services:
           memory: "${DOCKER_REDIS_MEMORY:-0}"
 
   mongodb:
-    image: mongo
+    image: mongo:latest
     ports:
       - 27017:27017
     environment:
-      - MONGO_INITDB_ROOT_USERNAME=${MONGO_USERNAME}
-      - MONGO_INITDB_ROOT_PASSWORD=${MONGO_PASSWORD}
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASSWORD}
+      MONGO_INITDB_DATABASE: cloudleak
+      MONDODB_LOG_DIR: /dev/null

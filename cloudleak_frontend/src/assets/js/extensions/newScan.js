@@ -1,19 +1,16 @@
 let $ = require("jquery");
 
-$("#startScan").on("submit", function (e) {
+$("#startScan").on("submit", function () {
   const target = $("#target").val();
-  const platform = $("#basicSelect").val();
-
+  const platform = $("#platform-select").val();
   $.ajax({
+    url: "http://127.0.0.1:5000/api/scans",
     type: "POST",
-    url: "http://localhost:8000/api/scans",
-    data: { target_scan: target, platform_scan: platform },
+    data: JSON.stringify({ target, platform }),
+    contentType: "application/json; charset=utf-8",
     dataType: "json",
-    success(response) {
-      alert("succuss", response);
-    },
-    error(response) {
-      alert("Error", response);
+    error: function () {
+      alert("Failed to start scan. Check logs as well.");
     },
   });
 });
