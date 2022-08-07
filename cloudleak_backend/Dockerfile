@@ -1,14 +1,21 @@
-FROM python:3.10
-
+FROM python:3.9-slim-buster as app
 LABEL maintainer="Daniel Azulay <serializator@gmail.com>"
 
-WORKDIR /backend
-ENV FLASK_APP="cloudleak.app"
-ENV FLASK_RUN_HOST=0.0.0.0
+WORKDIR /app
 
-ENV FLASK_ENV=development
-COPY requirements.txt /backend/requirements.txt
-RUN pip install -r requirements.txt
+COPY requirements.txt /app/requirements.txt
+COPY . /app
 
-COPY . .
-CMD ["flask", "run"]
+RUN pip3 install -r requirements.txt
+
+ARG FLASK_ENV="production"
+ENV FLASK_ENV="${FLASK_ENV}" \
+    FLASK_APP="cloudleak.app" \
+    FLASK_SKIP_DOTENV="true" \
+    PYTHONUNBUFFERED="true" \
+    PYTHONPATH="." \
+    USER="python"
+
+EXPOSE 5000
+
+CMD ["flask", "run", "--host", "0.0.0.0"]

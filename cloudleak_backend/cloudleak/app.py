@@ -2,33 +2,10 @@ from celery import Celery
 from flask import Flask
 from flask_cors import CORS
 
-from cloudleak.routes.scans.buckets_scanner_api import scans_api
 
-from cloudleak_backend.config import settings
+def make_celery(flask_app=None):
+    flask_app = flask_app or create_app()
 
-
-def create_flask_app():
-    flask_app = Flask(__name__)
-    # flask_app.config.from_object(settings)
-    add_extensions(app=flask_app)
-
-    # register APIs.
-    flask_app.register_blueprint(scans_api)
-
-    # add celery
-    flask_app = create_celery_app(flask_app)
-
-    return flask_app
-
-
-def add_extensions(app):
-    """Configuring extensions for flask"""
-    CORS(app)
-
-    return None
-
-
-def create_celery_app(flask_app=None):
     celery_app = Celery(flask_app.import_name)
     celery_app.conf.update(flask_app.config.get("CELERY_CONFIG", {}))
 
@@ -41,4 +18,24 @@ def create_celery_app(flask_app=None):
     return celery_app
 
 
-app = create_flask_app()
+def create_app(register_blueprints=True):
+    flask_app = Flask(__name__)
+    flask_app.config.from_object("config.settings")
+
+    configure_extensions(app=flask_app)
+
+    if register_blueprints:
+        from cloudleak.routes.scans.buckets_scanner_api import scans_api
+        flask_app.register_blueprint(scans_api)
+
+    return flask_app
+
+
+def configure_extensions(app):
+    """Configuring extensions for flask"""
+    CORS(app)
+
+    return None
+
+
+app = create_app()

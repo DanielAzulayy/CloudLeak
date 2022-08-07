@@ -1,10 +1,9 @@
-from cloudleak_backend.cloudleak.common import scans
 from flask import Blueprint, abort, jsonify, request
 from loguru import logger
 
-scans_api = Blueprint("scans_api", __name__)
+from datetime import datetime
 
-mongo = PyMongo(create_flask_app())
+scans_api = Blueprint("scans_api", __name__)
 
 
 @scans_api.route("/api/scans", methods=["POST"])
@@ -28,7 +27,11 @@ def start_buckets_scan():
         abort(400, description="Scan info missing")
 
     try:
-        scan_id = scans.initiate_scan(user_scan_info)
+        from cloudleak.common import async_scan
+        from cloudleak.common import scans
+
+        user_scan_info["added_ts"] = round(datetime.now().timestamp())
+        scan_id = async_scan.initiate_scan(user_scan_info)
         scan = scans.get_scans(scan_id=scan_id)
     except Exception as e:
         logger.exception(e)
@@ -48,9 +51,10 @@ def get_scans():
     """
     found_scans = None
     try:
+        from cloudleak.common import scans
         found_scans = scans.get_scans()
     except Exception as e:
         logger.exception(e)
-        abort(500, description="Failed get all scans")
+        abort(500, description="Failed to get all scans")
 
     return jsonify(results=found_scans)
