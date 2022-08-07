@@ -1,14 +1,4 @@
 services:
-  frontend:
-    build: "./cloudleak_frontend"
-    ports:
-      - 8080:80
-    deploy:
-      resources:
-        limits:
-          cpus: "${DOCKER_FRONTEND_CPUS:-0}"
-          memory: "${DOCKER_FRONTEND_MEMORY:-0}"
-
   backend:
     build: "./cloudleak_backend"
     deploy:
@@ -17,22 +7,34 @@ services:
           cpus: "${DOCKER_BACKEND_CPUS:-0}"
           memory: "${DOCKER_BACKEND_MEMORY:-0}"
 
-  redis:
-    image: redis:alpine
-    ports:
-      - 6379:6379
-    deploy:
-      resources:
-        limits:
-          cpus: "${DOCKER_REDIS_CPUS:-0}"
-          memory: "${DOCKER_REDIS_MEMORY:-0}"
+  # frontend:
+  #   build: "./cloudleak_frontend"
+  #   depends_on:
+  #     - "backend"
+  #   ports:
+  #     - 8080:80
+  #   deploy:
+  #     resources:
+  #       limits:
+  #         cpus: "${DOCKER_FRONTEND_CPUS:-0}"
+  #         memory: "${DOCKER_FRONTEND_MEMORY:-0}"
 
-  mongodb:
-    image: mongo:latest
-    ports:
-      - ${MONGO_PORT}:${MONGO_PORT}
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: ${MONGO_USERNAME}
-      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASSWORD}
-      MONGO_INITDB_DATABASE: ${MONGO_INITDB_DATABASE}
-      MONDODB_LOG_DIR: /dev/null
+  # redis:
+  #   image: redis:alpine
+  #   ports:
+  #     - 6379:6379
+  #   deploy:
+  #     resources:
+  #       limits:
+  #         cpus: "${DOCKER_REDIS_CPUS:-0}"
+  #         memory: "${DOCKER_REDIS_MEMORY:-0}"
+
+  # mongodb:
+  #   image: mongo:latest
+  #   ports:
+  #     - ${MONGO_PORT}:${MONGO_PORT}
+  #   environment:
+  #     MONGO_INITDB_ROOT_USERNAME: ${MONGO_USERNAME}
+  #     MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASSWORD}
+  #     MONGO_INITDB_DATABASE: ${MONGO_INITDB_DATABASE}
+  #     MONDODB_LOG_DIR: /dev/null

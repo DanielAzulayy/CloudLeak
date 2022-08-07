@@ -2,9 +2,9 @@ from celery import Celery
 from flask import Flask
 from flask_cors import CORS
 
-from routes.scans.buckets_scanner_api import scans_api
+from cloudleak.routes.scans.buckets_scanner_api import scans_api
 
-# from cloudleak_backend.cloudleak.config import settings
+from cloudleak_backend.config import settings
 
 
 def create_flask_app():

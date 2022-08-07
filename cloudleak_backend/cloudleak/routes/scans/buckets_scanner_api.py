@@ -6,6 +6,7 @@ scans_api = Blueprint("scans_api", __name__)
 
 mongo = PyMongo(create_flask_app())
 
+
 @scans_api.route("/api/scans", methods=["POST"])
 def start_buckets_scan():
     """API for bucket scanning.
@@ -35,6 +36,7 @@ def start_buckets_scan():
 
     return jsonify(results=scan)
 
+
 @scans_api.route("/api/scans", methods=["GET"])
 def get_scans():
     """Getting all valid scans.
@@ -49,6 +51,6 @@ def get_scans():
         found_scans = scans.get_scans()
     except Exception as e:
         logger.exception(e)
-        abort(500)
+        abort(500, description="Failed get all scans")
 
     return jsonify(results=found_scans)

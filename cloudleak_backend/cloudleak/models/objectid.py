@@ -22,4 +22,5 @@ class PydanticObjectId(ObjectId):
             examples=["5eb7cf5a86d9755df3a6c593", "5eb7cfb05e32e07750a1756a"],
         )
 
+
 ENCODERS_BY_TYPE[PydanticObjectId] = str
