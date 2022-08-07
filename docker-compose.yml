@@ -29,15 +29,15 @@ services:
     ports:
       - 5000:5000
 
-  # frontend:
-  #   build: "./cloudleak_frontend"
-  #   depends_on:
-  #     - "backend"
-  #   ports:
-  #     - 8080:80
-  #   deploy:
-  #     resources:
-  #       limits:
-  #         cpus: "${DOCKER_FRONTEND_CPUS:-0}"
-  #         memory: "${DOCKER_FRONTEND_MEMORY:-0}"
+  frontend:
+    build: "./cloudleak_frontend"
+    depends_on:
+      - "backend"
+    ports:
+      - 8080:80
+    deploy:
+      resources:
+        limits:
+          cpus: "${DOCKER_FRONTEND_CPUS:-0}"
+          memory: "${DOCKER_FRONTEND_MEMORY:-0}"
 
