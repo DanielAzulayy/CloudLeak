@@ -8,8 +8,7 @@ COPY . /app
 
 RUN pip3 install -r requirements.txt
 
-ARG FLASK_ENV="production"
-ENV FLASK_ENV="${FLASK_ENV}" \
+ENV FLASK_DEBUG=1 \
     FLASK_APP="cloudleak.app" \
     FLASK_SKIP_DOTENV="true" \
     PYTHONUNBUFFERED="true" \
