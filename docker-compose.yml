@@ -1,4 +1,19 @@
 services:
+  backend:
+    build: "./cloudleak_backend"
+    env_file:
+      - ".env"
+    ports:
+      - 5000:5000
+    depends_on:
+      - redis
+      - mongo
+    deploy:
+      resources:
+        limits:
+          cpus: "${DOCKER_BACKEND_CPUS:-0}"
+          memory: "${DOCKER_BACKEND_MEMORY:-0}"
+      
   redis:
     image: redis:alpine
     ports:
@@ -9,25 +24,15 @@ services:
           cpus: "${DOCKER_REDIS_CPUS:-0}"
           memory: "${DOCKER_REDIS_MEMORY:-0}"
 
-  mongodb:
+  mongo:
     image: mongo:latest
     ports:
       - 27017:27017
     environment:
       MONGO_INITDB_ROOT_USERNAME: ${MONGO_USERNAME}
       MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASSWORD}
-      MONGO_INITDB_DATABASE: ${MONGO_INITDB_DATABASE}
+      MONGO_INITDB_DATABASE: cloudleak
       MONDODB_LOG_DIR: /dev/null
-
-  backend:
-    build: "./cloudleak_backend"
-    deploy:
-      resources:
-        limits:
-          cpus: "${DOCKER_BACKEND_CPUS:-0}"
-          memory: "${DOCKER_BACKEND_MEMORY:-0}"
-    ports:
-      - 5000:5000
 
   frontend:
     build: "./cloudleak_frontend"
