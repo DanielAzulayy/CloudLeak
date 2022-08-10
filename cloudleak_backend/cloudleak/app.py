@@ -20,7 +20,9 @@ def make_celery(flask_app=None):
 
 def create_app(register_blueprints=True):
     flask_app = Flask(__name__)
-    flask_app.config.from_object("config.settings")
+
+    flask_app.config.from_object("config.settings.CeleryConfig")
+    flask_app.config.from_object("config.settings.MongoConfig")
 
     configure_extensions(app=flask_app)
 
