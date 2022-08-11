@@ -15,7 +15,7 @@ $("#startScan").on("submit", function () {
       alert("Failed to start scan. Check logs as well.");
     },
     success: function () {
-      return;
+      alert("Success")
     },
   });
 });
