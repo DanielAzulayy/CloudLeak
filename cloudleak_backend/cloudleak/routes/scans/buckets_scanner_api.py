@@ -1,7 +1,11 @@
+import json
+from time import time
 from flask import Blueprint, abort, jsonify, request
 from loguru import logger
 
 from datetime import datetime
+
+from cloudleak.models.scan_status import ScanStatus
 
 scans_api = Blueprint("scans_api", __name__)
 
@@ -29,10 +33,10 @@ def start_buckets_scan():
     try:
         from cloudleak.common import async_scan
         from cloudleak.common import scans
-
-        user_scan_info["added_ts"] = round(datetime.now().timestamp())
+        user_scan_info["added_ts"] = round(time())
+        user_scan_info["status"] = ScanStatus.SCAN_RUNNING.value
         scan_id = async_scan.initiate_scan(user_scan_info)
-        scan = scans.get_scans(scan_id=scan_id)
+        scan = scans.get_scan(scan_id=scan_id)
     except Exception as e:
         logger.exception(e)
         abort(500, description="Failed to start scan")
@@ -52,7 +56,7 @@ def get_scans():
     found_scans = None
     try:
         from cloudleak.common import scans
-        found_scans = scans.get_scans()
+        found_scans = scans.get_scan()
     except Exception as e:
         logger.exception(e)
         abort(500, description="Failed to get all scans")

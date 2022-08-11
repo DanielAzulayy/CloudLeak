@@ -23,6 +23,4 @@ class MongoConfig:
     MONGO_USERNAME = os.getenv("MONGO_USERNAME")
     MONGO_PASSWORD = os.getenv("MONGO_PASSWORD")
     MONGO_PORT = os.getenv("MONGO_PORT", 27017)
-    MONGO_INITDB_DATABASE = os.getenv("MONGO_INITDB_DATABASE", "cloudleak")
     MONGO_URI = f"mongodb://{MONGO_USERNAME}:{MONGO_PASSWORD}@mongo:27017/cloudleak?authSource=admin"
-    print(MONGO_URI)

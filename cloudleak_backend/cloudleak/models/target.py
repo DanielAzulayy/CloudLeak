@@ -16,6 +16,7 @@ class Scan(BaseModel):
     id: Optional[PydanticObjectId] = Field(None, alias="_id")
     target: str
     platform: str
+    status: Optional[int]
     added_ts: Optional[datetime]
     finished_ts: Optional[datetime]
     # buckets: List[Bucket]
