@@ -1,6 +1,6 @@
 import json
 from time import time
-from flask import Blueprint, abort, jsonify, request
+from flask import Blueprint, abort, jsonify, request, redirect
 from loguru import logger
 
 from datetime import datetime
@@ -41,7 +41,7 @@ def start_buckets_scan():
         logger.exception(e)
         abort(500, description="Failed to start scan")
 
-    return jsonify(results=scan)
+    return redirect('/')
 
 
 @scans_api.route("/api/scans", methods=["GET"])
@@ -62,3 +62,4 @@ def get_scans():
         abort(500, description="Failed to get all scans")
 
     return jsonify(results=found_scans)
+
