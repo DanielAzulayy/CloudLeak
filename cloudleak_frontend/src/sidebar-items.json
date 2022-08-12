@@ -9,6 +9,11 @@
     "icon": "grid-fill"
   },
   {
+    "name": "Start Scan",
+    "url": "new-scan.html",
+    "icon": "grid-fill"
+  },
+  {
     "name": "Scan History",
     "key": "table-datatable",
     "icon": "grid-fill",
