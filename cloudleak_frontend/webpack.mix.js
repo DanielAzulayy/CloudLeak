@@ -32,7 +32,7 @@ mix
   .js(`${assetsPath}js/extensions/datatables.js`, "assets/js/extensions")
   .js(`${assetsPath}js/extensions/newScan.js`, "assets/js/extensions")
   .js(`${assetsPath}js/extensions/simple-datatables.js`, "assets/js/extensions")
-  .js(`${assetsPath}js/pages/dashboard.js`, "assets/js/pages")
+  .js(`${assetsPath}js/extensions/dashboard.js`, "assets/js/extensions")
   .js(`${assetsPath}js/pages/horizontal-layout.js`, "assets/js/pages")
   .copy("src/assets/images", "dist/assets/images")
   .copy(

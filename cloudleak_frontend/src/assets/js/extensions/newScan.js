@@ -1,7 +1,7 @@
 let $ = require("jquery");
 
 $("#startScan").on("submit", function () {
-  const target = $("#target").val();
+  const target = $("#target-column").val();
   const platform = $("#platform-select").val();
 
   $.ajax({

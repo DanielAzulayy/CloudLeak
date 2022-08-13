@@ -1,5 +1,5 @@
-{% set title = 'Form Layout' %}
-{% set filename = 'form-layout.html' %}
+{% set title = 'New Scan' %}
+{% set filename = 'new-scan.html' %}
 
 {% extends 'layouts/master.html' %}
 {% block content %}
@@ -8,44 +8,40 @@
         <div class="row">
             <div class="col-12 col-md-6 order-md-1 order-last">
                 <h3>Start A New Scan</h3>
-                <p class="text-subtitle text-muted">Provide a target and start the scan</p>
+                <p class="text-subtitle text-muted"></p>
             </div>
             <div class="col-12 col-md-6 order-md-2 order-first">
                 <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Form Layout</li>
+                        <li class="breadcrumb-item active" aria-current="page">New Scan</li>
                     </ol>
                 </nav>
             </div>
         </div>
     </div>
-
-
-
-    <!-- // Basic multiple Column Form section start -->
     <section id="multiple-column-form">
         <div class="row match-height">
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title">Multiple Column</h4>
+                        <h4 class="card-title">Provide a target & platform and start the scan</h4>
                     </div>
                     <div class="card-content">
                         <div class="card-body">
-                            <form class="form">
+                            <form class="form" id="startScan" action="/">
                                 <div class="row">
                                     <div class="col-md-6 col-12">
                                         <div class="form-group" >
                                             <label for="first-name-column">Target</label>
                                             <input type="text" id="target-column" class="form-control" required
-                                                placeholder="Tesla, companyName, productName" name="target-column">
+                                                placeholder="Tesla, companyName, productName, etc" >
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="last-name-column">Platform</label>
-                                            <select class="form-select" id="platform-select" required>
+                                            <select class="form-select" id="platform-select">
                                                 <option value="all">All</option>
                                                 <option value="s3">AWS S3</option>
                                                 <option value="azure">Azure</option>
@@ -59,7 +55,7 @@
                                     <p></p>
                                     <p></p>
                                     <div class="col-12 d-flex justify-content-end">
-                                        <button type="submit" class="btn btn-primary me-1 mb-1">Submit</button>
+                                        <button type="submit" class="btn btn-primary me-1 mb-1">Start Scan</button>
                                         <button type="reset" class="btn btn-light-secondary me-1 mb-1">Reset</button>
                                     </div>
                                 </div>
@@ -70,6 +66,7 @@
             </div>
         </div>
     </section>
-    <!-- // Basic multiple Column Form section end -->
 </div>
+
+<script src="assets/js/extensions/newScan.js"></script>
 {% endblock %}

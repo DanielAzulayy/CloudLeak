@@ -15,59 +15,7 @@
                 <h3>CloudLeak Dashboard</h3>
             </div>
             <div style="width: 150px; display: table-cell;" class="form-group">
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#inlineForm"> Start A New Scan</button>
-                <div class="modal fade text-left" id="inlineForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel33"
-                    aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
-                        role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h4 class="modal-title"> New Scan </h4>
-                                <button type="button" class="close"
-                                    data-bs-dismiss="modal" aria-label="Close">
-                                    <i data-feather="x"></i>
-                                </button>
-                            </div>
-
-                            <form id="startScan" method="POST" action="/#">
-                                <div class="modal-body">
-                                    <label>Target</label>
-                                    <div class="form-group">
-                                        <input type="text" id="target"
-                                            placeholder="ex. tesla, apple, productName"
-                                            class="form-control" required>
-                                    </div>
-                                    <label>Platforms</label>
-                                    <div class="form-group" id="platform">
-                                        <select class="form-select" id="platform-select">
-                                            <option value="all">All</option>
-                                            <option value="s3">AWS S3</option>
-                                            <option value="azure">Azure</option>
-                                            <option value="gcp">GCP</option>
-                                            <!-- <option value="digitalocean">Digital Ocean</option> -->
-                                            <!-- <option>Alibaba Cloud</option> -->
-                                            <!-- <option>Linode</option> -->
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button"
-                                        class="btn btn-light-secondary"
-                                        data-bs-dismiss="modal">
-                                        <i
-                                            class="bx bx-x d-block d-sm-none"></i>
-                                        <span
-                                            class="d-none d-sm-block">Close</span>
-                                    </button>
-                                    <button class="btn btn-primary ml-1" data-bs-dismiss="modal">
-                                        <i class="bx bx-check d-block d-sm-none"></i>
-                                        <span type="submit" class="d-none d-sm-block">Start Scan</span>
-                                    </button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#inlineForm" onclick="window.location.href='new-scan.html'"> Start A New Scan</button>
             </div>
         </div>
     </div>
@@ -75,7 +23,7 @@
 
 <div class="page-content">
     <section class="row">
-        <div class="col-12 col-lg-9">
+        <div class="col-12">
             <div class="row">
                 <div class="col-6 col-lg-3 col-md-6">
                     <div class="card">
@@ -167,65 +115,6 @@
                         <div class="card-header">
                             <h4>Profile Visit</h4>
                         </div>
-                        <!-- <div class="card-body"> -->
-                            <!-- <div class="row">
-                                <div class="col-6">
-                                    <div class="d-flex align-items-center">
-                                        <svg class="bi text-primary" width="32"
-                                            height="32" fill="blue"
-                                            style="width:10px">
-                                            <use
-                                                xlink:href="assets/images/bootstrap-icons.svg#circle-fill" />
-                                        </svg>
-                                        <h5 class="mb-0 ms-3">Europe</h5>
-                                    </div>
-                                </div>
-                                <div class="col-6">
-                                    <h5 class="mb-0">862</h5>
-                                </div>
-                                <div class="col-12">
-                                    <div id="chart-europe"></div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-6">
-                                    <div class="d-flex align-items-center">
-                                        <svg class="bi text-success" width="32"
-                                            height="32" fill="blue"
-                                            style="width:10px">
-                                            <use
-                                                xlink:href="assets/images/bootstrap-icons.svg#circle-fill" />
-                                        </svg>
-                                        <h5 class="mb-0 ms-3">America</h5>
-                                    </div>
-                                </div>
-                                <div class="col-6">
-                                    <h5 class="mb-0">375</h5>
-                                </div>
-                                <div class="col-12">
-                                    <div id="chart-america"></div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-6">
-                                    <div class="d-flex align-items-center">
-                                        <svg class="bi text-danger" width="32"
-                                            height="32" fill="blue"
-                                            style="width:10px">
-                                            <use
-                                                xlink:href="assets/images/bootstrap-icons.svg#circle-fill" />
-                                        </svg>
-                                        <h5 class="mb-0 ms-3">Indonesia</h5>
-                                    </div>
-                                </div>
-                                <div class="col-6">
-                                    <h5 class="mb-0">1025</h5>
-                                </div>
-                                <div class="col-12">
-                                    <div id="chart-indonesia"></div>
-                                </div>
-                            </div>
-                        </div> -->
                     </div>
                 </div>
                 <div class="col-12 col-xl-8">
@@ -235,17 +124,19 @@
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table table-hover table-lg">
+                                <table class="table table-hover table-lg" id="scans-table">
                                     <thead>
                                         <tr>
                                             <th>ID</th>
                                             <th>Target</th>
                                             <th>Status</th>
+                                            <th>Platform</th>
                                             <th>Created At</th>
                                             <th>Completed At</th>
                                             <th>Actions</th>
                                         </tr>
                                     </thead>
+                                    <tbody id="scans"></tbody>
                                 </table>
                             </div>
                         </div>
@@ -253,70 +144,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-12 col-lg-3">
-            <div class="card">
-                <div class="card-body py-4 px-5">
-                    <div class="d-flex align-items-center">
-                        <div class="ms-3 name">
-                            <h5 class="font-bold">Profile</h5>
-                            <h6 class="text-muted mb-0">Tets</h6>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-header">
-                    <h4>Recent Messages</h4>
-                </div>
-                <!-- <div class="card-content pb-4">
-                    <div class="recent-message d-flex px-4 py-3">
-                        <div class="avatar avatar-lg">
-                            <img src="assets/images/faces/4.jpg">
-                        </div>
-                        <div class="name ms-4">
-                            <h5 class="mb-1">Hank Schrader</h5>
-                            <h6 class="text-muted mb-0">@johnducky</h6>
-                        </div>
-                    </div>
-                    <div class="recent-message d-flex px-4 py-3">
-                        <div class="avatar avatar-lg">
-                            <img src="assets/images/faces/5.jpg">
-                        </div>
-                        <div class="name ms-4">
-                            <h5 class="mb-1">Dean Winchester</h5>
-                            <h6 class="text-muted mb-0">@imdean</h6>
-                        </div>
-                    </div>
-                    <div class="recent-message d-flex px-4 py-3">
-                        <div class="avatar avatar-lg">
-                            <img src="assets/images/faces/1.jpg">
-                        </div>
-                        <div class="name ms-4">
-                            <h5 class="mb-1">Daniels</h5>
-                            <h6 class="text-muted mb-0">sds</h6>
-                        </div>
-                    </div>
-                    <div class="px-4">
-                        <button
-                            class='btn btn-block btn-xl btn-outline-primary font-bold mt-3'>Start
-                            Conversation</button>
-                    </div>
-                </div> -->
-            </div>
-            <div class="card">
-                <div class="card-header">
-                    <h4>Visitors Profile</h4>
-                </div>
-                <!-- <div class="card-body">
-                    <div id="chart-visitors-profile"></div>
-                </div> -->
-            </div>
-        </div>
     </section>
-
 </div>
-{% endblock %}
-{% block js %}
-<script src="assets/js/pages/dashboard.js"></script>
-<script src="assets/js/extensions/newScan.js"></script>
+<script src="assets/js/extensions/dashboard.js"></script>
 {% endblock %}

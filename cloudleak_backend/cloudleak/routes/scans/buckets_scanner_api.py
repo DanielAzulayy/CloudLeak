@@ -3,7 +3,6 @@ from time import time
 from flask import Blueprint, abort, jsonify, request, redirect
 from loguru import logger
 
-from datetime import datetime
 
 from cloudleak.models.scan_status import ScanStatus
 
@@ -33,6 +32,7 @@ def start_buckets_scan():
     try:
         from cloudleak.common import async_scan
         from cloudleak.common import scans
+        
         user_scan_info["added_ts"] = round(time())
         user_scan_info["status"] = ScanStatus.SCAN_RUNNING.value
         scan_id = async_scan.initiate_scan(user_scan_info)
@@ -41,7 +41,7 @@ def start_buckets_scan():
         logger.exception(e)
         abort(500, description="Failed to start scan")
 
-    return redirect('/')
+    return json.dumps({'success':True}), 200, {'ContentType':'application/json'} 
 
 
 @scans_api.route("/api/scans", methods=["GET"])
