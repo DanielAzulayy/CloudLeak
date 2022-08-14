@@ -3,7 +3,7 @@ from flask import Flask
 from flask_cors import CORS
 
 
-def make_celery(flask_app=None):
+def create_celery(flask_app=None):
     flask_app = flask_app or create_app()
 
     celery_app = Celery(flask_app.import_name)
