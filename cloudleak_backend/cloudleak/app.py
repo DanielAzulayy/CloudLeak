@@ -6,16 +6,18 @@ from flask_cors import CORS
 def create_celery(flask_app=None):
     flask_app = flask_app or create_app()
 
-    celery_app = Celery(flask_app.import_name)
-    celery_app.conf.update(flask_app.config.get("CELERY_CONFIG", {}))
+    celery = Celery(flask_app.import_name)
+    celery.conf.update(flask_app.config.get("CELERY_CONFIG", {}))
 
-    class ContextTask(celery_app.Task):
+    TaskBase = celery.Task
+
+    class ContextTask(TaskBase):
         def __call__(self, *args, **kwargs):
             with flask_app.app_context():
                 return self.run(*args, **kwargs)
 
-    celery_app.Task = ContextTask
-    return celery_app
+    celery.Task = ContextTask
+    return celery
 
 
 def create_app(register_blueprints=True):
@@ -28,6 +30,7 @@ def create_app(register_blueprints=True):
 
     if register_blueprints:
         from cloudleak.routes.scans.buckets_scanner_api import scans_api
+
         flask_app.register_blueprint(scans_api)
 
     return flask_app
@@ -40,4 +43,4 @@ def configure_extensions(app):
     return None
 
 
-app = create_app()
+celery_app = create_celery()

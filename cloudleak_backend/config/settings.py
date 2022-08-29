@@ -6,18 +6,19 @@ load_dotenv()
 
 
 class CeleryConfig:
-    REDIS_BROKER_URL = os.getenv("REDIS_BROKER_URL", "redis://localhost:6379/0")
-    REDIS_BACKEND_URL = os.getenv("REDIS_BACKEND_URL", "redis://localhost:6379/0")
+    REDIS_BROKER_URL = os.getenv("REDIS_BROKER_URL", "redis://redis:6379/0")
+    REDIS_BACKEND_URL = os.getenv("REDIS_BACKEND_URL", "redis://redis:6379/0")
     CELERY_CONFIG = {
         "broker_url": REDIS_BROKER_URL,
         "result_backed": REDIS_BACKEND_URL,
-        "task_serializer": "pickle",
-        "result_serializer": "pickle",
-        "accept_content": ["pickle"],
-        "result_accept_content": ["pickle"],
+        "task_serializer": "json",
+        "result_serializer": "json",
+        "accept_content": ["json"],
+        "result_accept_content": ["json"],
         "task_max_retries": None,
-        "include": [],
+        "include": ["cloudleak.common.async_scan"],
     }
+
 
 class MongoConfig:
     MONGO_USERNAME = os.getenv("MONGO_USERNAME")

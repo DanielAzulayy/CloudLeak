@@ -1,8 +1,10 @@
+from flask_pymongo import PyMongo
+
+from cloudleak.app import create_app
 from cloudleak.models.objectid import PydanticObjectId
 from cloudleak.models.target import Scan
-from cloudleak.app import create_app
+
 from ..models.scan_status import ScanStatus
-from flask_pymongo import PyMongo
 
 app = create_app(register_blueprints=False)
 mongo_client = PyMongo(app, uri=app.config["MONGO_URI"])
@@ -18,12 +20,20 @@ def add_scan(scan_info):
 
 def get_scan(scan_id=None):
     if scan_id is not None:
-        return [Scan(**doc).to_json() for doc in db.scans.find({"_id": scan_id})]
+        cursor = db.scans.find({"_id": scan_id})
+    else:
+        cursor = db.scans.find()
+        
+    if not cursor: return []
 
-    all_docs = []
-    for doc in db.scans.find():
+    found_docs = []
+    for doc in cursor:
         json_doc = Scan(**doc).to_json()
-        json_doc['status'] = ScanStatus(json_doc['status']).name
-        all_docs.append(json_doc)
+        json_doc["status"] = ScanStatus(json_doc["status"]).name
+        found_docs.append(json_doc)
 
-    return all_docs
+    return found_docs
+
+
+def save_bucket(bucket_dict):
+    db.scans.insert_one(bucket_dict)

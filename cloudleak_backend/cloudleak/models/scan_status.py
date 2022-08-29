@@ -1,5 +1,6 @@
 from enum import Enum
 
+
 class ScanStatus(Enum):
     SCAN_RUNNING = 1
     SCAN_COMPLETED = 2

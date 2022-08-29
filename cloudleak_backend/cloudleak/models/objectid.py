@@ -3,9 +3,7 @@ from pydantic.json import ENCODERS_BY_TYPE
 
 
 class PydanticObjectId(ObjectId):
-    """
-    ObjectId field. Compatible with Pydantic.
-    """
+    """ObjectId field. Compatible with Pydantic."""
 
     @classmethod
     def __get_validators__(cls):

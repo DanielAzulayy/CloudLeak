@@ -1,3 +1,4 @@
+from dataclasses import field
 from datetime import datetime
 from platform import platform
 from typing import List, Optional, Union
@@ -7,9 +8,8 @@ from pydantic import BaseModel, Field
 
 from .objectid import PydanticObjectId
 
-
-class Bucket(BaseModel):
-    ...
+# class Bucket(BaseModel):
+#     buckets: list = field(default=list)
 
 
 class Scan(BaseModel):

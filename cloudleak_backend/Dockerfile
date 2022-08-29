@@ -8,6 +8,9 @@ COPY . /app
 
 RUN pip3 install -r requirements.txt
 
+# https://github.com/DanielAzulayy/BucketsHunter
+RUN pip install bucketshunter 
+
 ENV FLASK_DEBUG=1 \
     FLASK_APP="cloudleak.app" \
     FLASK_SKIP_DOTENV="true" \
