@@ -5,19 +5,21 @@ services:
       - ".env"
     ports:
       - 5000:5000
-    depends_on:
-      - redis
-      - mongo
     deploy:
       resources:
         limits:
           cpus: "${DOCKER_BACKEND_CPUS:-0}"
           memory: "${DOCKER_BACKEND_MEMORY:-0}"
-      
+    depends_on:
+      - redis
+      - mongo
+
   redis:
     image: redis:alpine
     ports:
       - 6379:6379
+    volumes:
+      - "redis:/data"
     deploy:
       resources:
         limits:
@@ -36,8 +38,6 @@ services:
 
   frontend:
     build: "./cloudleak_frontend"
-    depends_on:
-      - "backend"
     ports:
       - 8080:80
     deploy:
@@ -45,4 +45,28 @@ services:
         limits:
           cpus: "${DOCKER_FRONTEND_CPUS:-0}"
           memory: "${DOCKER_FRONTEND_MEMORY:-0}"
+    depends_on:
+      - backend
+      - mongo
 
+  worker:
+    build:
+      context: "./cloudleak_backend"
+      target: "app"
+    command: celery -A "cloudleak.app.celery_app" worker -l INFO
+    depends_on:
+      - redis
+      - backend
+    deploy:
+      resources:
+        limits:
+          cpus: "${DOCKER_WORKER_CPUS:-0}"
+          memory: "${DOCKER_WORKER_MEMORY:-0}"
+    volumes:
+      - "data:/data"
+      - "db:/db"
+
+volumes:
+  redis: {}
+  db: {}
+  data: {}
