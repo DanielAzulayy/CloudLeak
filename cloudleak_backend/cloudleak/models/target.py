@@ -1,15 +1,12 @@
 from dataclasses import field
 from datetime import datetime
 from platform import platform
-from typing import List, Optional, Union
+from typing import Optional
 
 from fastapi.encoders import jsonable_encoder
 from pydantic import BaseModel, Field
 
 from .objectid import PydanticObjectId
-
-# class Bucket(BaseModel):
-#     buckets: list = field(default=list)
 
 
 class Scan(BaseModel):
@@ -19,7 +16,7 @@ class Scan(BaseModel):
     status: Optional[int]
     added_ts: Optional[datetime]
     finished_ts: Optional[datetime]
-    # buckets: List[Bucket]
+    buckets: Optional[list]
 
     def to_json(self):
         return jsonable_encoder(self, exclude_none=True)

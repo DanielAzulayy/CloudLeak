@@ -1,3 +1,4 @@
+from typing import List
 from flask_pymongo import PyMongo
 
 from cloudleak.app import create_app
@@ -18,13 +19,14 @@ def add_scan(scan_info):
     return scan.id
 
 
-def get_scan(scan_id=None):
+def get_scan(scan_id=None) -> List:
     if scan_id is not None:
         cursor = db.scans.find({"_id": scan_id})
     else:
         cursor = db.scans.find()
-        
-    if not cursor: return []
+
+    if not cursor:
+        return []
 
     found_docs = []
     for doc in cursor:
@@ -35,5 +37,7 @@ def get_scan(scan_id=None):
     return found_docs
 
 
-def save_bucket(bucket_dict):
-    db.scans.insert_one(bucket_dict)
+def save_bucket(scan_id, buckets_results):
+    db.scans.update_one(
+        {"_id": PydanticObjectId(scan_id)}, {"$set": {"buckets": buckets_results}}
+    )
