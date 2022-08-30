@@ -11,10 +11,13 @@
                 <br>
             </div>
             <div class="col-12 col-md-6 order-md-2 order-first">
-                <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
+                <nav aria-label="breadcrumb"
+                    class="breadcrumb-header float-start float-lg-end">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">DataTable Jquery</li>
+                        <li class="breadcrumb-item"><a
+                                href="index.html">Dashboard</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">
+                            DataTable Jquery</li>
                     </ol>
                 </nav>
             </div>
@@ -26,10 +29,9 @@
                 See all files/endpoints from scanning</p>
             </div>
             <div class="card-body">
-                <table class="table" id="table1">
+                <table class="table" id="bucket-endpoints">
                     <thead>
                         <tr>
-                            <th>Bucket</th>
                             <th>Platform</th>
                             <th>Service</th>
                             <th>Endpoint</th>
@@ -37,13 +39,6 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr> 
-                            <td> <a href="https://tesla2.s3.amazonaws.com">tesla2.s3.amazonaws.com</a></td>
-                            <td>AWS</td>
-                            <td>S3</td>
-                            <td><a href="https://tesladownload.s3.amazonaws.com/tesladownload"> https://tesladownload.s3.amazonaws.com/tesladownload </a></td>
-                            <td><span class="badge bg-success">Active</span></td>
-                        </tr>
                     </tbody>
                 </table>
             </div>
@@ -57,4 +52,5 @@
 {% endblock %}
 {% block js %}
 <script src="assets/js/extensions/datatables.js"></script>
+<script src="assets/js/extensions/bucket-endpoints.js"></script>
 {% endblock %}

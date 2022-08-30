@@ -1,6 +1,10 @@
 # CloudLeak - automated cloud vulnerability scanner
+<<<<<<< Updated upstream
 Coming soon!
 AWS, Azure, and GCP.
+=======
+Supports: AWS, Azure, and GCP.
+>>>>>>> Stashed changes
 
 
 

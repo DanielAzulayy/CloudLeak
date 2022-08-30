@@ -30,6 +30,7 @@ mix
   .js(`${assetsPath}js/app.js`, "assets/js")
   .js(`${assetsPath}js/extensions/ui-chartjs.js`, "assets/js/extensions")
   .js(`${assetsPath}js/extensions/datatables.js`, "assets/js/extensions")
+  .js(`${assetsPath}js/extensions/bucket-endpoints.js`, "assets/js/extensions")
   .js(`${assetsPath}js/extensions/newScan.js`, "assets/js/extensions")
   .js(`${assetsPath}js/extensions/simple-datatables.js`, "assets/js/extensions")
   .js(`${assetsPath}js/extensions/dashboard.js`, "assets/js/extensions")
