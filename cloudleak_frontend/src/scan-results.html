@@ -14,7 +14,7 @@
                 <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">DataTable Jquery</li>
+                        <li class="breadcrumb-item active" aria-current="page">Scan Results</li>
                     </ol>
                 </nav>
             </div>
@@ -23,27 +23,19 @@
     <section class="section">
         <div class="card">
             <div class="card-header">
-                All scans results with open buckets, files, urls, permissions, etc</p>
+                All scans results with open buckets & permissions</p>
             </div>
             <div class="card-body">
-                <table class="table" id="scanResultsTable">
+                <table class="table" id="bucket-scan-results">
                     <thead>
                         <tr>
                             <th>Bucket</th>
                             <th>Platform</th>
                             <th>Service</th>
-                            <th>Status</th>
-                            <th>Actions</th>
+                            <!-- <th>permissions</th> -->
                         </tr>
                     </thead>
                     <tbody>
-                        <tr> 
-                            <td> <a href="https://tesla2.s3.amazonaws.com">tesla2.s3.amazonaws.com</a></td>
-                            <td>AWS</td>
-                            <td>S3</td>
-                            <td><span class="badge bg-success">Active</span></td>
-                            <td>delete, edit, etc.</td>
-                        </tr>
                     </tbody>
                 </table>
             </div>
@@ -55,6 +47,8 @@
 <link rel="stylesheet" href="assets/css/pages/fontawesome.css">
 <link rel="stylesheet" href="assets/css/pages/datatables.css">
 {% endblock %}
+
 {% block js %}
 <script src="assets/js/extensions/datatables.js"></script>
+<script src="assets/js/extensions/scan-results.js"></script>
 {% endblock %}

@@ -1,10 +1,9 @@
 import json
 from time import time
 
+from cloudleak.models.scan_status import ScanStatus
 from flask import Blueprint, abort, jsonify, redirect, request
 from loguru import logger
-
-from cloudleak.models.scan_status import ScanStatus
 
 scans_api = Blueprint("scans_api", __name__)
 

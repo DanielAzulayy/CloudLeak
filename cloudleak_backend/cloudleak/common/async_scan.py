@@ -1,12 +1,11 @@
 from re import I
 from typing import Dict
-from cloudleak.models.objectid import PydanticObjectId
-
-from flask_pymongo import PyMongo
 
 import cloudleak.common.scans as scans
 from cloudleak.app import create_celery
 from cloudleak.common.buckets_hunter import BucketScan
+from cloudleak.models.objectid import PydanticObjectId
+from flask_pymongo import PyMongo
 
 celery = create_celery()
 

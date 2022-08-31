@@ -1,7 +1,7 @@
 from dataclasses import field
 from datetime import datetime
 from platform import platform
-from typing import Optional, List
+from typing import List, Optional
 
 from fastapi.encoders import jsonable_encoder
 from pydantic import BaseModel, Field

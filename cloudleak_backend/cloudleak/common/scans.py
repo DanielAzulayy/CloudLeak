@@ -1,9 +1,9 @@
 from typing import List
-from flask_pymongo import PyMongo
 
 from cloudleak.app import create_app
 from cloudleak.models.objectid import PydanticObjectId
 from cloudleak.models.target import Scan
+from flask_pymongo import PyMongo
 
 from ..models.scan_status import ScanStatus
 

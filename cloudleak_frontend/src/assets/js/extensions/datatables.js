@@ -192,4 +192,4 @@ DataTable.ext.renderer.pageButton.bootstrap = function ( settings, host, idx, bu
 return DataTable;
 }));
 
-let jquery_datatable = $("#table1").DataTable();
+let jquery_datatable = $("#bucket-endpoints-table").DataTable();

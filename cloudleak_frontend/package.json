@@ -30,6 +30,7 @@
     "feather-icons": "^4.29.0",
     "jquery": "^3.6.0",
     "laravel-mix": "^6.0.49",
+    "laravel-mix-glob": "^1.1.10",
     "nunjucks": "^3.2.3",
     "perfect-scrollbar": "^1.5.5",
     "rtlcss": "^3.5.0",

@@ -1,9 +1,10 @@
-import ujson
 import subprocess
 from os import mkdir
 from time import time
 
+import ujson
 from cloudleak.models.objectid import PydanticObjectId
+
 from .scans import save_bucket
 
 
