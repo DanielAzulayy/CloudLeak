@@ -15,6 +15,8 @@ docker-compose build && docker-compose up
 
 ## Screenshots
 
+Scanning for "tesla", showing potential buckets realtead to tesla.com
+
 [![Screen-Shot-2022-08-31-at-20-07-53.png](https://i.postimg.cc/2yzZk59P/Screen-Shot-2022-08-31-at-20-07-53.png)](https://postimg.cc/2bK6TCDw)
 
 [![Screen-Shot-2022-08-31-at-20-08-20.png](https://i.postimg.cc/BnWJHz4v/Screen-Shot-2022-08-31-at-20-08-20.png)](https://postimg.cc/tY50H210) 
