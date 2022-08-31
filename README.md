@@ -1,6 +1,6 @@
 # CloudLeak
 
-CloudLeak is a web application tool with focus on cloud security, it's just a demo version of what I really want to build, and it has a lot of room to grow from here!
+CloudLeak is a web application tool with focus on cloud security.
 
 ## Installation
 
